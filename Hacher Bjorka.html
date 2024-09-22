@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Document</title>
+</head>
+
+<style>
+    section {
+        position: relative;
+        top: 200px;
+    }
+    .judul {
+        display: flex;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .pb, .pb1 {
+        height: 50px;
+        width: 100px;
+        border-radius: 50px;
+        font-size: 18px;
+        border: none;
+        font-weight: bold;
+    }
+    .pb {
+        background-color: chartreuse;
+    }
+    .pbg {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        position: relative;
+    }
+</style>
+
+<body>
+    <section class="section1">
+        <h1 class="judul">Maukah menjadi ibu dari Anak anaku?</h1>
+
+        <div class="pbg">
+            <button onclick="contoh()" class="pb">yes</button>
+            <button id="noButton" class="pb1" onclick="moveButton()">no</button>
+        </div>
+    </section>
+</body>
+
+<script type="text/javascript">
+    function contoh() {
+    const imgRiski = 'assets/riski.png';
+        swal({
+            title: "Berhasil!",
+            text: "Kamu berhasil menjadi pacar saya",
+            icon: "success",
+            content: {
+                element: "img",
+                attributes: {
+                    src: imgRiski, // Ganti dengan URL gambar kamu
+                    alt: "Love Image",
+                    style: "width: 100%; height: 50;" // Sesuaikan ukuran gambar
+                },
+            },
+            button: true
+        });
+    }
+
+    function moveButton() {
+        const button = document.getElementById('noButton');
+        const section = document.querySelector('.pbg');
+
+        // Nonaktifkan tombol
+        button.disabled = true;
+
+        // Hitung posisi acak
+        const maxX = section.clientWidth - button.clientWidth;
+        const maxY = section.clientHeight - button.clientHeight;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        // Atur posisi tombol
+        button.style.position = 'absolute';
+        button.style.left = `${randomX}px`;
+        button.style.top = `${randomY}px`;
+    }
+</script>
+
+</html>
